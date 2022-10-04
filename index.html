@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animation</title>
-    <link rel="stylesheet" href="animation.css">
+    <!-- <link rel="stylesheet" href="animation.css"> -->
     <style>
         body{
-            background-color: white;
+            background-image:url("Images/no.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -16,11 +18,13 @@
             width: 100vw;
             height: 100vh;
             margin: 0;
+            transition: background-image 1s;
         }
         #I1{
             position: relative;
             bottom: 10vh;
         }
+
         img{
             height: 200px;
         }
@@ -28,21 +32,22 @@
             position: relative;
             top: 8vh;
         }
+        /* #ele{
+            display: none;
+            height: 50vh;
+            width: 50vw;
+        } */
         div{
             position: relative;
             top: 20vh;
             display: flex;
             justify-content:space-between ;
-            display: none;
-        }
-        div>img{
-            /* padding: 10px; */
+            visibility:hidden;
         }
         #g1{
             position: relative;
             right: 22vw;
             bottom: 520px;
-             /* bottom: 550px; */
         }
         #g2{
             position: relative;
@@ -71,22 +76,11 @@
 <script>
     let bool=1;
     function on(){
-        document.querySelector("div").style.display="flex";
-        if(bool){
-            document.getElementById("I1").src="images/big-light.png";
-            document.querySelector("button").innerHTML="On";
-            document.querySelector("body").style.backgroundColor="grey";
-            bool=0;
-            moveyp();
-        }
-        else{
-            document.getElementById("I1").src="images/light-bulb.png";
-            document.querySelector("button").innerHTML="Off";
-            bool=1;
-            document.querySelector("body").style.backgroundColor="white";
-        }
+        electricity();
+        setTimeout(mainwork,2000);
+    }  let t=0;
         function moveyp()
-        {
+        {   
             let pos=0;
             let yp=setInterval(() => {
                 document.getElementById("g2").style.bottom=pos+"px";
@@ -95,9 +89,13 @@
                 document.getElementById("g4").style.bottom=pos+"px";
                 if(pos==520){
                  clearInterval(yp);
-                 moveyn();}
+                 t++;
+                 moveyn();
+                    }
                 pos++;
+               
             },5);
+
         }
         function moveyn()
         {
@@ -108,12 +106,49 @@
                 document.getElementById("g1").style.bottom=(520-pos)+"px";                
                 document.getElementById("g4").style.bottom=pos+"px";
                 if(pos==0){
-                 clearInterval(yn)
-                 moveyp();}
+                    if(t==3)
+                    {
+                        document.querySelector("div").style.visibility="hidden";
+                        document.getElementById("I1").src="images/light-bulb.png";
+                        document.querySelector("button").innerHTML="Off";
+                        bool=1;
+                        document.querySelector("body").style.backgroundImage='url("Images/no.jpg")';
+                        clearInterval(yn);
+                        
+                    }
+                    else{
+                 clearInterval(yn);
+                 moveyp();}}
                 pos--;
+                // t++;
             },5);
         }
-    }
+        function electricity(){
+            console.log(5);
+            document.querySelector("body").style.backgroundImage='url("Images/ele.jpg")';
+            var audio = new Audio('Sound/ele.wav');
+            audio.play();
+
+        }
+        function mainwork(){
+            document.querySelector("div").style.visibility="visible";
+        if(bool){
+            var audio = new Audio('Sound/gh.mp3');
+            audio.play();
+            document.getElementById("I1").src="images/big-light.png";
+            document.querySelector("button").innerHTML="On";
+            document.querySelector("body").style.backgroundImage='url("Images/scary.jpg")';
+            bool=0;
+            moveyp();
+        }
+        else{
+            document.querySelector("div").style.visibility="hidden";
+            document.getElementById("I1").src="images/light-bulb.png";
+            document.querySelector("button").innerHTML="Off";
+            bool=1;
+            document.querySelector("body").style.backgroundImage='url("Images/no.jpg")';
+        }
+        }
 </script>
 </body>
 </html>
