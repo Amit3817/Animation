@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <link rel="stylesheet" href="animation.css">
+    <style>
+        body{
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+        #I1{
+            position: relative;
+            bottom: 10vh;
+        }
+        img{
+            height: 200px;
+        }
+        button{
+            position: relative;
+            top: 8vh;
+        }
+        div{
+            position: relative;
+            top: 20vh;
+            display: flex;
+            justify-content:space-between ;
+            display: none;
+        }
+        div>img{
+            /* padding: 10px; */
+        }
+        #g1{
+            position: relative;
+            right: 22vw;
+            bottom: 520px;
+             /* bottom: 550px; */
+        }
+        #g2{
+            position: relative;
+            right: 10vw;
+        }
+        #g3{
+            position: relative;
+            left: 10vw;
+            bottom: 520px;
+        } 
+        #g4{
+            position: relative;
+            left: 20vw;
+        }
+    </style>
+</head>
+<body>
+<img id="I1" src="images/light-bulb.png" alt=""  >
+<button onclick="on()">Off</button>
+<div>
+    <img id="g1" src="images/g1.png" alt="">
+    <img id="g2" src="images/g2.png" alt="">
+    <img id='g3' src="images/g3.png" alt="">
+    <img id='g4' src="images/g4.png" alt="">
+</div>
+<script>
+    let bool=1;
+    function on(){
+        document.querySelector("div").style.display="flex";
+        if(bool){
+            document.getElementById("I1").src="images/big-light.png";
+            document.querySelector("button").innerHTML="On";
+            document.querySelector("body").style.backgroundColor="grey";
+            bool=0;
+            moveyp();
+        }
+        else{
+            document.getElementById("I1").src="images/light-bulb.png";
+            document.querySelector("button").innerHTML="Off";
+            bool=1;
+            document.querySelector("body").style.backgroundColor="white";
+        }
+        function moveyp()
+        {
+            let pos=0;
+            let yp=setInterval(() => {
+                document.getElementById("g2").style.bottom=pos+"px";
+                document.getElementById("g3").style.bottom=(520-pos)+"px";
+                document.getElementById("g1").style.bottom=(520-pos)+"px";
+                document.getElementById("g4").style.bottom=pos+"px";
+                if(pos==520){
+                 clearInterval(yp);
+                 moveyn();}
+                pos++;
+            },5);
+        }
+        function moveyn()
+        {
+            let pos=520;
+            let yn=setInterval(() => {
+                document.getElementById("g2").style.bottom=pos+"px";                
+                document.getElementById("g3").style.bottom=(520-pos)+"px";                
+                document.getElementById("g1").style.bottom=(520-pos)+"px";                
+                document.getElementById("g4").style.bottom=pos+"px";
+                if(pos==0){
+                 clearInterval(yn)
+                 moveyp();}
+                pos--;
+            },5);
+        }
+    }
+</script>
+</body>
+</html>
