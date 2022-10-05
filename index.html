@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animation</title>
+    <link rel="icon" type="image/x-icon" href="images/fav.png">
     <style>
         body{
             background-image:url("images/no.jpg");
@@ -100,7 +101,7 @@
                 document.getElementById("g1").style.bottom=(520-pos)+"px";                
                 document.getElementById("g4").style.bottom=pos+"px";
                 if(pos==0){
-                    if(t==3)
+                    if(t==2)
                     {
                         document.querySelector("div").style.visibility="hidden";
                         document.getElementById("I1").src="images/light-bulb.png";
@@ -114,20 +115,19 @@
                  clearInterval(yn);
                  moveyp();}}
                 pos--;
-                // t++;
             },5);
         }
         function electricity(){
-            console.log(5);
+            document.querySelector("div").style.visibility="hidden";
             document.querySelector("body").style.backgroundImage='url("images/ele.jpg")';
-            var audio1 = new Audio('Sound/ele.wav');
+            let audio1 = new Audio('Sound/ele.wav');
             audio1.play();
 
         }
         function mainwork(){
             document.querySelector("div").style.visibility="visible";
         if(bool){
-            var audio2 = new Audio('Sound/gh.mp3');
+            let audio2 = new Audio('Sound/gh.mp3');
             audio2.play();
             document.getElementById("I1").src="images/big-light.png";
             document.querySelector("button").innerHTML="Click Me Fast";
