@@ -5,10 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animation</title>
-    <!-- <link rel="stylesheet" href="animation.css"> -->
     <style>
         body{
-            background-image:url("Images/no.jpg");
+            background-image:url("images/no.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
@@ -32,11 +31,6 @@
             position: relative;
             top: 8vh;
         }
-        /* #ele{
-            display: none;
-            height: 50vh;
-            width: 50vw;
-        } */
         div{
             position: relative;
             top: 20vh;
@@ -66,7 +60,7 @@
 </head>
 <body>
 <img id="I1" src="images/light-bulb.png" alt=""  >
-<button onclick="on()">Off</button>
+<button onclick="on()">Don't Click Me</button>
 <div>
     <img id="g1" src="images/g1.png" alt="">
     <img id="g2" src="images/g2.png" alt="">
@@ -110,9 +104,9 @@
                     {
                         document.querySelector("div").style.visibility="hidden";
                         document.getElementById("I1").src="images/light-bulb.png";
-                        document.querySelector("button").innerHTML="Off";
+                        document.querySelector("button").innerHTML="Don't Click Me";
                         bool=1;
-                        document.querySelector("body").style.backgroundImage='url("Images/no.jpg")';
+                        document.querySelector("body").style.backgroundImage='url("images/no.jpg")';
                         clearInterval(yn);
                         
                     }
@@ -125,28 +119,28 @@
         }
         function electricity(){
             console.log(5);
-            document.querySelector("body").style.backgroundImage='url("Images/ele.jpg")';
-            var audio = new Audio('Sound/ele.wav');
-            audio.play();
+            document.querySelector("body").style.backgroundImage='url("images/ele.jpg")';
+            var audio1 = new Audio('Sound/ele.wav');
+            audio1.play();
 
         }
         function mainwork(){
             document.querySelector("div").style.visibility="visible";
         if(bool){
-            var audio = new Audio('Sound/gh.mp3');
-            audio.play();
+            var audio2 = new Audio('Sound/gh.mp3');
+            audio2.play();
             document.getElementById("I1").src="images/big-light.png";
-            document.querySelector("button").innerHTML="On";
-            document.querySelector("body").style.backgroundImage='url("Images/scary.jpg")';
+            document.querySelector("button").innerHTML="Click Me Fast";
+            document.querySelector("body").style.backgroundImage='url("images/scary.jpg")';
             bool=0;
             moveyp();
         }
         else{
             document.querySelector("div").style.visibility="hidden";
             document.getElementById("I1").src="images/light-bulb.png";
-            document.querySelector("button").innerHTML="Off";
+            document.querySelector("button").innerHTML="Don't Click Me";
             bool=1;
-            document.querySelector("body").style.backgroundImage='url("Images/no.jpg")';
+            document.querySelector("body").style.backgroundImage='url("images/no.jpg")';
         }
         }
 </script>
